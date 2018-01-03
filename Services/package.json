@@ -1,0 +1,49 @@
+{
+  "name": "robosource-services",
+  "version": "1.0.0",
+  "description": "RoboSource services framework",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.3.2"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --recursive",
+    "coverage": "./node_modules/.bin/istanbul cover node_modules/mocha/bin/_mocha -- -R spec --recursive && istanbul report cobertura",
+    "quality": "jshint --reporter=checkstyle functions/*/*.js > checkstyle-result.xml"
+  },
+  "author": "Vandium Software Inc.",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "chai": "^3.5.0",
+    "freshy": "^1.0.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3"
+  },
+  "dependencies": {
+    "app-root-path": "^1.0.0",
+    "async": "^2.0.1",
+    "aws-sdk": "^2.6.7",
+    "chai": "^3.5.0",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "fast-csv": "^2.3.0",
+    "fs": "^0.0.1-security",
+    "hashmap": "^2.0.6",
+    "js-remove-property": "^1.0.5",
+    "jwt-decode": "^2.1.0",
+    "lambda-leak": "^1.0.0",
+    "lambda-tester": "^2.6.0",
+    "mocha": "^3.0.2",
+    "moment": "^2.15.1",
+    "mysql": "^2.11.1",
+    "node-mysql-nesting": "0.0.3",
+    "node-uuid": "^1.4.7",
+    "node-zopfli": "^2.0.2",
+    "query-string": "^4.2.3",
+    "request": "^2.78.0",
+    "scarlet": "^2.0.20",
+    "vandium-utils": "^1.0.0"
+  }
+}

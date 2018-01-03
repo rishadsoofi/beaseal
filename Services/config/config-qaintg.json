@@ -1,0 +1,73 @@
+{
+    "env": {
+        "name": "qaintg"
+    },
+    "database": {
+        "host": "robodev-robosource.cluster-ctgd5k9mp7po.us-east-1.rds.amazonaws.com",
+        "port": "3306",
+        "username": "rsdev",
+        "password": "Z3V}YA(Q>G5MGvBm",
+        "database": "robodb",
+        "connectTimeout": 2500,
+        "connectionLimit": 15,
+        "queueLimit": 30,
+        "acquireTimeout": 1000000,
+        "timeout": 60000
+    },
+    "jobsapi": {
+        "host": "dev-jobsapi3internal.findly.com",
+        "port": 80,
+        "method": "POST",
+        "endPoint": "/api/stjob",
+        "limit": 0,
+        "limitKey": "65949429-66FC-49C3-A17B-DCB121BED20A",
+        "URLSuffix": "&facetList=&facetList=id"
+    },
+    "SNS": {
+        "arnPrefix": "arn:aws:sns:us-east-1:534106927381:",
+        "jobBuckettingTopic": "Robosource-Job-Bucketing",
+        "ruleEngineTopic": "Robosource-Rule-Engine"
+    },
+    "S3": {
+        "appliesFeed": {
+            "bucket": "appliesfromdmp",
+            "prefix": "",
+            "suffix": ".gz"
+        }
+    },
+    "http": {
+        "authorizer": {
+            "enabled": false,
+            "WPValidateURL": "http://robosource.genesis.hodes.com/wp-json/jwt-auth/v1/token/validate",
+            "resultTtlInSeconds": 120
+        },
+        "interceptor": {
+            "validateOrgId": false,
+            "WPFetchUserDetailsURL": "http://robosource.genesis.hodes.com/wp-json/wp/v2/users/me?_envelope&context=edit"
+        },
+        "privateAccess": false
+    },
+    "functions": {
+        "getJobCountForAllOrg": {
+            "events": {
+                "schedule": "rate(6 hours)"
+            }
+        },
+        "getAllJobCount": {
+            "timeout": 15
+        },
+        "triggerRule": {
+            "timeout": 90
+        },
+        "triggerPostForAllOrg": {
+            "timeout": 15,
+            "events": {
+                "schedule": "cron(0 8 * * ? *)",
+                "_comment": "cron(minutes,hour,dayofthemonth,month,dayofweek,year)"
+            }
+        },
+        "loadAppliesData": {
+            "timeout": 300
+        }
+    }
+}
